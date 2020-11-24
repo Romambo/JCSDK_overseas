@@ -1,0 +1,6 @@
+framework module JCSDK {
+  umbrella header "JCSDK.h"
+
+  export *
+  module * { export * }
+}

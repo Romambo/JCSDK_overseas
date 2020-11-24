@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>appid</key>
+	<string></string>
+	<key>channelid</key>
+	<string>IOS</string>
+	<key>ReYunAppID</key>
+	<string></string>
+	<key>ReYunChannelID</key>
+	<string></string>
+	<key>UmengAppID</key>
+	<string></string>
+	<key>ShuShuAppID</key>
+	<string></string>
+	<key>TalkingDataAppID</key>
+	<string></string>
+	<key>KochavaAppID</key>
+	<string></string>
+	<key>TenJinAppID</key>
+	<string></string>
+	<key>ShowSplashFirst</key>
+	<false/>
+	<key>LogLevel</key>
+	<string>2</string>
+</dict>
+</plist>
