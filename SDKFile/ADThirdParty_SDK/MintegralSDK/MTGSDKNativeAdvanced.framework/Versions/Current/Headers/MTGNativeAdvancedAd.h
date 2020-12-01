@@ -10,7 +10,7 @@
 #import "MTGNativeAdvancedAdDelegate.h"
 
 
-#define MTGNativeAdvancedSDKVersion @"6.6.1"
+#define MTGNativeAdvancedSDKVersion @"6.6.8"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -49,6 +49,10 @@ typedef NS_ENUM(NSInteger, MTGNativeAdvancedAdVideoPlayType) {
 
 @property(nonatomic,copy,readonly) NSString * _Nonnull unitId;
 
+/**
+* get the id of this request ad,call  after nativeAdvancedAdLoadSuccess.
+*/
+@property(nonatomic,copy,readonly) NSString *_Nullable requestId;
 
 /**
 This is a method to initialize.

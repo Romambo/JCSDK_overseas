@@ -5,7 +5,7 @@
 
 
 
-#define MTGInterstitialSDKVersion @"6.6.1"
+#define MTGInterstitialSDKVersion @"6.6.8"
 
 
 #import <UIKit/UIKit.h>
@@ -89,9 +89,14 @@ typedef NS_ENUM(NSInteger, MTGInterstitialAdCategory) {
 @interface MTGInterstitialAdManager : NSObject
 
 
-@property (nonatomic, readonly)   NSString * _Nonnull currentUnitId;
+@property (nonatomic,copy,readonly)   NSString * _Nonnull currentUnitId;
 
-@property (nonatomic, readonly)   NSString * _Nullable placementId;
+@property (nonatomic,copy,readonly)   NSString * _Nullable placementId;
+
+/**
+* get the id of this request ad,call  after onInterstitialLoadSuccess.
+*/
+@property (nonatomic,copy,readonly)   NSString * _Nullable requestId;
 
 /**
 *   Initialize the interstitial ads manager.

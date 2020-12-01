@@ -91,6 +91,10 @@ extern NSString *const kNetworkNameKS;
 extern NSString *const kNetworkNameOgury;
 extern NSString *const kNetworkNameGoogleAdManager;
 extern NSString *const kNetworkNameADX;
+extern NSString *const kNetworkNameHelium;
+extern NSString *const kNetworkNameMintegralOnlineApi;
+extern NSString *const kNetworkNameGDTOnlineApi;
+
 
 extern NSString *const kInmobiGDPRStringKey;
 extern NSString *const kInmobiConsentStringKey;
@@ -122,6 +126,24 @@ extern NSString *const kATCustomDataIAPCurrencyKey;//string
 extern NSString *const kATCustomDataChannelKey;//string
 extern NSString *const kATCustomDataSubchannelKey;//string
 extern NSString *const kATCustomDataSegmentIDKey;//int
+
+extern NSString *const kATDeviceDataInfoOSVersionNameKey;
+extern NSString *const kATDeviceDataInfoOSVersionCodeKey;
+extern NSString *const kATDeviceDataInfoPackageNameKey;
+extern NSString *const kATDeviceDataInfoAppVersionNameKey;
+extern NSString *const kATDeviceDataInfoAppVersionCodeKey;
+extern NSString *const kATDeviceDataInfoBrandKey;
+extern NSString *const kATDeviceDataInfoModelKey;
+extern NSString *const kATDeviceDataInfoScreenKey;
+extern NSString *const kATDeviceDataInfoNetworkTypeKey;
+extern NSString *const kATDeviceDataInfoMNCKey;
+extern NSString *const kATDeviceDataInfoMCCKey;
+extern NSString *const kATDeviceDataInfoLanguageKey;
+extern NSString *const kATDeviceDataInfoTimeZoneKey;
+extern NSString *const kATDeviceDataInfoUserAgentKey;
+extern NSString *const kATDeviceDataInfoOrientKey;
+extern NSString *const kATDeviceDataInfoIDFAKey;
+extern NSString *const kATDeviceDataInfoIDFVKey;
 
 typedef NS_ENUM(NSInteger, ATUserLocation) {
     ATUserLocationUnknown = 0,
@@ -244,4 +266,11 @@ set exlude appleid list for sdk to filter offers
 */
 -(void) setExludeAppleIdArray:(NSArray *)appleIdArray;
 -(NSArray*) exludeAppleIdArray;
+
+/*
+set denied Upload Info list for sdk to Control report
+*/
+-(void) setDeniedUploadInfoArray:(NSArray *)uploadInfoArray;
+-(NSArray*) deniedUploadInfoArray;
+-(BOOL) isContainsForDeniedUploadInfoArray:(NSString *)key;
 @end

@@ -12,12 +12,14 @@ public static class JCiOSSDKPostprocess
     /// </summary>
     static string[] systemFrameworks = new string[]
     {
+	"AudioToolbox.framework",
         "Accelerate.framework",
         "AdSupport.framework",
         "AVFoundation.framework",
         "CoreGraphics.framework",
         "CoreLocation.framework",
         "CoreMedia.framework",
+	"CoreMotion.framework",
         "CoreTelephony.framework",
         "iAd.framework",
         "MessageUI.framework",
@@ -109,6 +111,11 @@ public static class JCiOSSDKPostprocess
         //google admob
         var dict = elementArray.AddDict();
         dict.SetString("SKAdNetworkIdentifier", "cstr6suwn9.skadnetwork");
+	//Facebook
+        dict = elementArray.AddDict();
+        dict.SetString("SKAdNetworkIdentifier", "v9wttpbfk9.skadnetwork");
+        dict = elementArray.AddDict();
+        dict.SetString("SKAdNetworkIdentifier", "n38lu8286q.skadnetwork");
         //Pangle
         dict = elementArray.AddDict();
         dict.SetString("SKAdNetworkIdentifier", "238da6jt44.skadnetwork");

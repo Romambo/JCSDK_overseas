@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace JCiOSSDK
 {
@@ -97,7 +97,7 @@ namespace JCiOSSDK
         /// </summary>
         public static event Action OnRewardVedioClick;
         /// <summary>
-        /// rewardVideo->close
+        /// rewardVideo->close ,and you can send rewards here
         /// </summary>
         public static event Action<bool> OnRewardVedioClose;
         /// <summary>
@@ -112,9 +112,6 @@ namespace JCiOSSDK
         /// rewardVideo->playVideo end
         /// </summary>
         public static event Action OnRewardVedioPlayVideoEnd;
-        ///// <summary>
-        ///// rewardVideo->Earn rewards
-        ///// </summary>
-        //public static event Action OnRewardVedioSuccess;
+        
     }
 }

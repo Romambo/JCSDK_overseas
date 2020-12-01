@@ -12,7 +12,7 @@
     #import "MTGBool.h"
 #endif
 
-#define MTGSplashSDKVersion @"6.6.1"
+#define MTGSplashSDKVersion @"6.6.8"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -70,6 +70,8 @@ NS_ASSUME_NONNULL_BEGIN
 /* Set this to show your own background color when loading ad. */
 @property (nonatomic, copy) UIColor *backgroundColor;
 
+/* get the id of this request ad,call after splashADPreloadSuccess || splashADLoadSuccess*/
+@property (nonatomic, readonly, copy) NSString *requestID;
 
 /********************** Normal Request ***************************/
 

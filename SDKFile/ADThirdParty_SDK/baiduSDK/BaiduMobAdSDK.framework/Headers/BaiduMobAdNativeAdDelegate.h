@@ -72,6 +72,11 @@
  */
 - (void)didDismissLandingPage:(UIView *)nativeAdView;
 
+/**
+ *  联盟官网点击跳转
+ */
+- (void)unionAdClicked:(UIView *)nativeAdView nativeAdDataObject:(BaiduMobAdNativeAdObject *)object;
+
 #pragma mark - Deprecated
 
 - (void)nativeAdObjectsSuccessLoad:(NSArray *)nativeAds BaiduMobAdDEPRECATED_MSG("已废弃，请使用nativeAdObjectsSuccessLoad:nativeAd:");
