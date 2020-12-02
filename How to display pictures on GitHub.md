@@ -3,7 +3,7 @@
 The picture on GitHub can’t be displayed because of a URL parsing error, so you need to redirect it to the corresponding IP address.
 
 
-### Included third-party librariesAdd GitHub's ip to host
+### Add GitHub's ip to host
 
 
 macOS：
