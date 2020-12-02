@@ -10,13 +10,13 @@ macOS：
 
 1、Open the terminal and add the following command line  
 
-    、、、
+    ```
         sudo vim /etc/hosts
-    、、、
+    ```
     
 2、Enter edit mode, copy the content below.(If you cannot edit, press esc, then press i to enter the edit mode)  
 
-    、、、
+   ```
         # GitHub Start
         140.82.114.3    github.com
         140.82.112.3    gist.github.com
@@ -36,7 +36,7 @@ macOS：
         199.232.68.133    avatars7.githubusercontent.com
         199.232.68.133    avatars8.githubusercontent.com
         # GitHub End
-    、、、
+    ```
     
 3、Press esc, enter: wq, and then press enter to save  
 
