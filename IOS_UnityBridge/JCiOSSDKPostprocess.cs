@@ -46,30 +46,41 @@ public static class JCiOSSDKPostprocess
             var pbxProject = new PBXProject();
             pbxProject.ReadFromFile(pbxprojPath);
 
-            //unity 2019 version is available
-            //string target = pbxProject.GetUnityMainTargetGuid();
-
-            //unity 2018、2017 version is available
+#if UNITY_2019_3_OR_NEWER
+            //unity 2019版使用
+            string target = pbxProject.GetUnityMainTargetGuid();
+            string uTarget = pbxProject.GetUnityFrameworkTargetGuid();
+#else
+            //unity 2018，2017版可使用
             string target = pbxProject.TargetGuidByName("Unity-iPhone");
+            string uTarget = target;
+#endif
 
             pbxProject.SetBuildProperty(target, "ENABLE_BITCODE", "NO");
+
+            pbxProject.SetBuildProperty(uTarget, "ENABLE_BITCODE", "NO");
+
+#if UNITY_2019_3_OR_NEWER
+            pbxProject.SetBuildProperty(uTarget, "SUPPORTS_MACCATALYST", "NO");
+#endif
             //pbxProject.SetBuildProperty(target, "GCC_ENABLE_OBJC_EXCEPTIONS", "YES");
             //pbxProject.SetBuildProperty(target, "GCC_C_LANGUAGE_STANDARD", "gnu99");
 
             //set Capability
             AddCapability(pbxProject, target, path);
             // 
-            AddSystemFramework(pbxProject, target);
+            AddSystemFramework(pbxProject, uTarget);
             
             pbxProject.AddBuildProperty(target, "OTHER_LDFLAGS", "-ObjC");
+            pbxProject.AddBuildProperty(uTarget, "OTHER_LDFLAGS", "-ObjC");
             //pbxProject.AddBuildProperty(target, "OTHER_LDFLAGS", "-fobjc-arc");
 
-            pbxProject.AddFileToBuild(target, pbxProject.AddFile("usr/lib/libbz2.tbd", "Libraries/libbz2.tbd", PBXSourceTree.Sdk));
-            pbxProject.AddFileToBuild(target, pbxProject.AddFile("usr/lib/libz.tbd", "Libraries/libz.tbd", PBXSourceTree.Sdk));
-            pbxProject.AddFileToBuild(target, pbxProject.AddFile("usr/lib/libxml2.tbd", "Libraries/libxml2.tbd", PBXSourceTree.Sdk));
-            pbxProject.AddFileToBuild(target, pbxProject.AddFile("usr/lib/libsqlite3.tbd", "Libraries/libsqlite3.tbd", PBXSourceTree.Sdk));
-            pbxProject.AddFileToBuild(target, pbxProject.AddFile("usr/lib/libc++.tbd", "Libraries/libc++.tbd", PBXSourceTree.Sdk));
-            pbxProject.AddFileToBuild(target, pbxProject.AddFile("usr/lib/libresolv.9.tbd", "Libraries/libresolv.9.tbd", PBXSourceTree.Sdk));
+            pbxProject.AddFileToBuild(uTarget, pbxProject.AddFile("usr/lib/libbz2.tbd", "Libraries/libbz2.tbd", PBXSourceTree.Sdk));
+            pbxProject.AddFileToBuild(uTarget, pbxProject.AddFile("usr/lib/libz.tbd", "Libraries/libz.tbd", PBXSourceTree.Sdk));
+            pbxProject.AddFileToBuild(uTarget, pbxProject.AddFile("usr/lib/libxml2.tbd", "Libraries/libxml2.tbd", PBXSourceTree.Sdk));
+            pbxProject.AddFileToBuild(uTarget, pbxProject.AddFile("usr/lib/libsqlite3.tbd", "Libraries/libsqlite3.tbd", PBXSourceTree.Sdk));
+            pbxProject.AddFileToBuild(uTarget, pbxProject.AddFile("usr/lib/libc++.tbd", "Libraries/libc++.tbd", PBXSourceTree.Sdk));
+            pbxProject.AddFileToBuild(uTarget, pbxProject.AddFile("usr/lib/libresolv.9.tbd", "Libraries/libresolv.9.tbd", PBXSourceTree.Sdk));
 
             pbxProject.WriteToFile(pbxprojPath);
 
@@ -98,7 +109,7 @@ public static class JCiOSSDKPostprocess
         }
 	
 	//Some channels use the Get Location feature internally
-	plist.root.SetString("NSLocationWhenInUseUsageDescription", "The app needs to get your location");
+	plist.root.SetString("NSLocationWhenInUseUsageDescription", "The application needs to access your location to provide you with more accurate advertising services");
         //Google id for admob
         plist.root.SetString("GADApplicationIdentifier", "ca-app-pub-9488501426181082/7319780494");
 	plist.root.SetBoolean("GADIsAdManagerApp", true);
@@ -111,7 +122,7 @@ public static class JCiOSSDKPostprocess
         //google admob
         var dict = elementArray.AddDict();
         dict.SetString("SKAdNetworkIdentifier", "cstr6suwn9.skadnetwork");
-	//Facebook
+	    //Facebook
         dict = elementArray.AddDict();
         dict.SetString("SKAdNetworkIdentifier", "v9wttpbfk9.skadnetwork");
         dict = elementArray.AddDict();
@@ -225,7 +236,16 @@ public static class JCiOSSDKPostprocess
     /// </summary>  
     private static void AddCapability(PBXProject pbxProject, string targetGuid, string path)
     {
-        var product = pbxProject.GetBuildPropertyForAnyConfig(targetGuid, "PRODUCT_NAME");
+        
+        var product = string.Empty;
+#if UNITY_2019_3_OR_NEWER
+        product = UnityEngine.Application.identifier;
+        var index = product.LastIndexOf('.');
+        product = product.Substring(index + 1);
+#else
+        product = pbxProject.GetBuildPropertyForAnyConfig(targetGuid, "PRODUCT_NAME"); 
+#endif
+
         var rentitlementFilePath = $"Unity-iPhone/{product}.entitlements";
         var fullPath = Path.Combine(path, rentitlementFilePath);
 
