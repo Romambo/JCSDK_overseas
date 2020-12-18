@@ -5,22 +5,29 @@
 //  Created by jesse on 2018/1/19.
 //  Copyright © 2018年 yun. All rights reserved.
 //
-#define REYUN_TRACKING_VERSION @"1.6.8"
+#define REYUN_TRACKING_VERSION @"1.7.8"
 #import <Foundation/Foundation.h>
 NS_ASSUME_NONNULL_BEGIN
 
+//deeplink callback 代理
 @protocol DeferredDeeplinkCalllback <NSObject>
-@optional
+@required
 - (void)onDeferredDeeplinkCalllback:(NSDictionary *)params;
 @end
 
+//caid更新代理
+@protocol CAIDUpdateProtocol <NSObject>
+@required
+- (void)onCAIDUpdateCalllback:(NSString *)caid;
+@end
+
 @interface Tracking : NSObject
-//开启打印日志   正式上线包请关掉
+
+//开启打印日志(在initWithAppKey:withChannelId:前调用)
+//正式上线包请关掉
 +(void) setPrintLog :(BOOL)print;
 // 开启数据统计
 + (void)initWithAppKey:(NSString *)appKey withChannelId:(NSString *)channelId;
-//延迟深度链接回调代理设置
-+ (void)setDeferredDeeplinkCalllbackDelegate:(id<DeferredDeeplinkCalllback>) delegate ;
 //注册成功后调用
 + (void)setRegisterWithAccountID:(NSString *)account;
 //登陆成功后调用
@@ -41,5 +48,21 @@ NS_ASSUME_NONNULL_BEGIN
 +(void)setEvent:(NSString *)eventName;
 //获取设备信息
 +(NSString*)getDeviceId;
+
 @end
+
+@interface Tracking(DeepLink)
+//延迟深度链接回调代理设置
++(void)setDeferredDeeplinkCalllbackDelegate:(id<DeferredDeeplinkCalllback>) delegate ;
+@end
+
+@interface Tracking(CAID)
+//调用initWithAppKey:withChannelId:前设置代理对象，可在caid更新后收到onCAIDUpdateCalllback:回调
++(void)setCAIDUpdateCallbackDelegate:(id<CAIDUpdateProtocol>) delegate ;
+//获取缓存的caid
++(nullable NSString *)getCachedCaid;
+//获取当前的caid
++(nullable NSString *)getCurrentCaid;
+@end
+
 NS_ASSUME_NONNULL_END

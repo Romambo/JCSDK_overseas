@@ -21,7 +21,7 @@
 	<key>TenJinAppID</key>
 	<string></string>
 	<key>ShowSplashFirst</key>
-	<false/>
+	<true/>
 	<key>LogLevel</key>
 	<string>2</string>
 </dict>

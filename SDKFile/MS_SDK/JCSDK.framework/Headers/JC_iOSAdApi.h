@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param block Internal advertising logic request result block
 +(void)jcSDKInitConfigWithAppId:(NSString*)appId channelId:(NSString*)channelId isOpenInBody:(BOOL)isOpenInBody block:(void(^)(BOOL isOk))block;
 
+
 #pragma mark -  GDPR
 /// Determine if it is EU territory API
 /// @param block callback isEU? YES / NO
