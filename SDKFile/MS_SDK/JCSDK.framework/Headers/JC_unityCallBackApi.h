@@ -78,6 +78,11 @@ void native_CallBack(ResultHandler sucessLoad,ResultHandler failLoad,ResultHandl
 
 }
 
+//2021-1-6新增评、价、弹框点击回调clickStatus 字符串1是不弹或者点击差评 0是点击好评
+void evaViewShow_CallBack(ResultHandler clickStatus);
+
+//2021-1-25新增gameAnalytics ab测试值更新回调
+void gameAnayticsValue_CallBack(ResultHandler valueConfig);
 #endif
 
 #if defined (__cplusplus)

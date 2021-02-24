@@ -43,6 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setAppName:(NSString *)appName;
 // optional
 + (void)setUserInfoBlock:(void(^)(KSAdUserInfo *))userInfoBlock;
+// optional
++ (void)setAppTag:(NSString *)appTag;
 /**
  Configure development mode.
  @param level : default BUAdSDKLogLevelNone

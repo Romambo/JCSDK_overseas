@@ -22,6 +22,7 @@
 
 #define MSNativeADKey @"MSNativeADNotificationKey"
 
+#define MSEvaViewShowKey @"ShowEvaViewKEY"//评、价、弹框没弹，或者点击了差评提交、关闭等为字符串1，点击好评0
 #pragma mark - Callback data description
 
 /*

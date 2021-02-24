@@ -44,6 +44,14 @@ void sendEvent(char *event,char *jsonEventInfo);
 
 /// Interstitial ad display time interval
 int Inter_showpacingCallBack();
+
+
+/// ads point
+const char *show_pointInfo();
+
+
+void show_evaViewMethod();
+
 }
 
 #endif
@@ -55,6 +63,9 @@ int Inter_showpacingCallBack();
 
 
 @interface JC_unityAdApi : NSObject
+
+@property (nonatomic , strong)NSDictionary *JClaunchOptions;
+
 +(instancetype)getInstance;
 
 /// init sdk with oc .
@@ -62,6 +73,7 @@ int Inter_showpacingCallBack();
 
 /// Interstitial ad display time interval
 -(int)getInterSpacing;
+
 @end
 
 NS_ASSUME_NONNULL_END

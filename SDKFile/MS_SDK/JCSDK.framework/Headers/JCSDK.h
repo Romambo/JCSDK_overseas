@@ -50,14 +50,59 @@
  
  优化umeng-key默认为本地配置
  新增用户留存天数上报
-
+ 新增数数游戏上报功能
  */
 /*
- 
+ 2020-12-17
  version2.1.6 稳定出包记录
  新增热云上报广告展示和点击事件
  修复部分bug
+ scheme/attribution 新增ry 和 userid上报
+ 2020-12-28
+ 新增数数自动事件上报
+ 新增应用内评、价、弹框和埋点上报
+ 2021-1-13
+ 提供对外评、价弹框API、广告点位预留接口
  */
+/*
+ 2021-1-18
+ version2.2.6
+ 新增fb数据统计
+ 移除评、论功能
+ 2021-1-20
+ 优化一下load成功广告，判断isReady失败导致重复load循环的问题
+ 
+ 2021-2-1
+ 移除location收集，用于粘液定制
+ */
+/*
+2021-2-19
+ 更新版本3.0.0，支持topon5.7.13 以及对应的第三方广告库
+ //2021-2-19新增
+ // 请求开屏
+ static NSString *REQUEST_SPLASH = @"request_splash_ios";
+ // 开屏load成功
+ static NSString *LOAD_SPLASH_SUCCESS = @"loadsplash_success_ios";
+ // 开屏load失败
+ static NSString *LOAD_SPLASH_FAILURE = @"loadsplash_failure_ios";
+ // 展示开屏成功
+ static NSString *SHOW_SPLASH_SUCCESS = @"showsplash_success_ios";
+ // 展示开屏失败
+ static NSString *SHOW_SPLASH_FAILURE = @"showsplash_failure_ios";
+ //开屏isready失败
+ static NSString *ISREADY_SPLASH_FAILURE = @"isReadysplash_failure_ios";
+*/
+/*
+ 体内接口超时时间由2s增加到3s
+ 启动时开屏请求延迟0.5s,激励、插屏请求延迟1s改为2s
+ 开屏新增预加载，开屏关闭后缓存一个供下次使用
+ 
+ 开屏增加部分第三方广告渠道直连参数 ，sigmob、MTG等没有appkey ，google默认竖屏
+ 
+ 修改iOS上报_splash_ios
+ 修复fb上报数据头文件重复导致的bug1
+ */
+
 #import <Foundation/Foundation.h>
 #import "JC_iOSAdApi.h"
 #import "JCAdCallBackHeader.h"

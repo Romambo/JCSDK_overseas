@@ -41,6 +41,9 @@ typedef NS_ENUM (NSInteger, MTGErrorCode) {
 
     
     kMTGErrorCodeNoSupportPopupWindow                           = 12940001,
+    
+    kMTGErrorCodeFailedDiskIO                                   = 12950001,
+
 };
 
 @interface MTGErrorCodeConstant : NSObject

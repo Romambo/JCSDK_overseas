@@ -23,6 +23,7 @@
 #import "KSAdSplashInteractDelegate.h"
 #import "KSAdSplashManager.h"
 #import "KSAdSplashViewController.h"
+#import "KSAdPlayableDemoViewController.h"
 #import "KSFullscreenVideoAd.h"
 #import "KSRewardedVideoAd.h"
 #import "KSRewardedVideoModel.h"
