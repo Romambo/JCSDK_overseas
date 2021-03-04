@@ -101,6 +101,9 @@
  
  修改iOS上报_splash_ios
  修复fb上报数据头文件重复导致的bug1
+ 
+ 优化开屏load isReady=NO 返回加载失败
+ 延时0.5m展示开屏，并添加show开屏埋点
  */
 
 #import <Foundation/Foundation.h>
