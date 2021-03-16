@@ -104,6 +104,8 @@
  
  优化开屏load isReady=NO 返回加载失败
  延时0.5m展示开屏，并添加show开屏埋点
+ 
+ 开启外部控制banner展示功能
  */
 
 #import <Foundation/Foundation.h>
