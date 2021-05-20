@@ -108,14 +108,12 @@ public static class JCiOSSDKPostprocess
             plist.root.values.Remove(exitsOnSuspendKey);
         }
 	
-	//Some channels use the Get Location feature internally
-	plist.root.SetString("NSLocationWhenInUseUsageDescription", "The application needs to access your location to provide you with more accurate advertising services");
         //Google id for admob
         plist.root.SetString("GADApplicationIdentifier", "ca-app-pub-9488501426181082/7319780494");
 	plist.root.SetBoolean("GADIsAdManagerApp", true);
 
 	//Get IDFA permission configuration ，iOS14 support
-        plist.root.SetString("NSUserTrackingUsageDescription", "We need to access your IDFA to track the source of advertising and provide you with accurate advertising services");
+        plist.root.SetString("NSUserTrackingUsageDescription", "应用程序需要访问您的IDFA来追踪广告来源，便于向您提供更精准的广告服务");
 
         //Use "SKAdNetwork" to track conversions： iOS 14 support
         var elementArray = plist.root.CreateArray("SKAdNetworkItems");
